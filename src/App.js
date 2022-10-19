@@ -17,6 +17,7 @@ function App() {
       const jobJson = JSON.stringify(newJobs)
       console.log(jobJson);
       localStorage.setItem("json", jobJson)
+      console.log(save);
 
       return newJobs
     })
@@ -32,7 +33,10 @@ function App() {
             <ul className='bgr-white'>
               { jobs.map((item, index)=>{
                 return(
-                  <li key={index}>{item}</li>
+                  <div className='flex' key={index}>
+                    <li>{item}</li>
+                    <button>xóa</button>
+                  </div>
                 )
               }) }
             </ul>
