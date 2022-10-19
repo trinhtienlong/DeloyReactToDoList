@@ -10,18 +10,17 @@ function App() {
   const [jobs, setJobs] = useState(jobJson ?? [])
 
   const onSubmit = () =>{
-    if(job !== ""){
-      setJobs(save => {
-        const newJobs = [...save, job]
-  
-        const jobJson = JSON.stringify(newJobs)
-        console.log(jobJson);
-        localStorage.setItem("json", jobJson)
-  
-        return newJobs
-      })
-      setJob('')
-    }
+    job !== "" &&
+    setJobs(save => {
+      const newJobs = [...save, job]
+
+      const jobJson = JSON.stringify(newJobs)
+      console.log(jobJson);
+      localStorage.setItem("json", jobJson)
+
+      return newJobs
+    })
+    setJob('')
   }
 
   return (
