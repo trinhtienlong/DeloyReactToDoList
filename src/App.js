@@ -24,6 +24,10 @@ function App() {
     setJob('')
   }
 
+  const remove = (e) =>{
+    e.target.parentElement.remove()
+  }
+
   return (
       <>
         <h1 className='cl-white'>Todolist App</h1>
@@ -35,7 +39,7 @@ function App() {
                 return(
                   <div className='flex' key={index}>
                     <li>{item}</li>
-                    <button>xóa</button>
+                    <button onClick={remove}>xóa</button>
                   </div>
                 )
               }) }
