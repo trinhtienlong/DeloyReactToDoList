@@ -26,12 +26,18 @@ function App() {
     let keyName = e.target.parentElement.querySelector('li').innerText;
     e.target.parentElement.remove()
     for(let i = 0 ; i < jobJson.length ; i++ ){
-      if( jobJson[i] == keyName ){
+      if( jobJson[i] === keyName ){
         jobJson.splice(i, 1);
-        let jobJsons = JSON.stringify(jobJson)
-        localStorage.setItem("json", jobJsons)
+        let jobJsonNew = JSON.stringify(jobJson)
+        localStorage.setItem("json", jobJsonNew)
       }
     }
+  }
+
+  const removeAll = (e) =>{
+    let keyName = e.target.parentElement.parentElement;
+    keyName.remove()
+    localStorage.removeItem("json");
   }
 
   return (
@@ -49,6 +55,7 @@ function App() {
                   </div>
                 )
               }) }
+              <li className='textAlg'><span onClick={removeAll}>---- xóa tất cả ----</span></li>
             </ul>
         </div>
       </>

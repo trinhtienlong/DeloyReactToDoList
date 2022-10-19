@@ -59,10 +59,17 @@ body{
   padding: 0;
 }
 
-.flex button:hover{
+.flex button:hover,
+.textAlg :hover{
+  cursor: pointer;
   color: red;
 }
 
+.textAlg{
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
