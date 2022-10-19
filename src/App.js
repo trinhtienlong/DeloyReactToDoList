@@ -3,6 +3,7 @@ import './App.css';
 
 function App() {
   const jobJson = JSON.parse(localStorage.getItem("json"))
+  const rmoveAll = document.getElementById("removeAll")
 
   const [job, setJob] = useState('')
   console.log(job);
@@ -19,6 +20,9 @@ function App() {
 
       return newJobs
     })
+
+    rmoveAll.classList.remove("uact");
+
     setJob('')
   }
 
@@ -55,7 +59,7 @@ function App() {
                   </div>
                 )
               }) }
-              <li className='textAlg'><span onClick={removeAll}>---- xóa tất cả ----</span></li>
+              <li id='removeAll' className='textAlg uact'><span onClick={removeAll}>---- xóa tất cả ----</span></li>
             </ul>
         </div>
       </>
