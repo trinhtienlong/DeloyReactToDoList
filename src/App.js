@@ -15,9 +15,7 @@ function App() {
       const newJobs = [...save, job]
 
       const jobJson = JSON.stringify(newJobs)
-      console.log(jobJson);
       localStorage.setItem("json", jobJson)
-      console.log(save);
 
       return newJobs
     })
@@ -25,7 +23,15 @@ function App() {
   }
 
   const remove = (e) =>{
+    let keyName = e.target.parentElement.querySelector('li').innerText;
     e.target.parentElement.remove()
+    for(let i = 0 ; i < jobJson.length ; i++ ){
+      if( jobJson[i] == keyName ){
+        jobJson.splice(i, 1);
+        let jobJsons = JSON.stringify(jobJson)
+        localStorage.setItem("json", jobJsons)
+      }
+    }
   }
 
   return (
