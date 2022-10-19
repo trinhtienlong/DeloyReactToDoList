@@ -19,7 +19,7 @@ function App() {
 
       return newJobs
     })
-    setJob()
+    setJob('')
   }
 
   return (
