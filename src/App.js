@@ -3,10 +3,8 @@ import './App.css';
 
 function App() {
   const jobJson = JSON.parse(localStorage.getItem("json"))
-  const rmoveAll = document.getElementById("removeAll")
 
   const [job, setJob] = useState('')
-  console.log(job);
 
   const [jobs, setJobs] = useState(jobJson ?? [])
 
@@ -20,8 +18,6 @@ function App() {
 
       return newJobs
     })
-
-    rmoveAll.classList.remove("uact");
 
     setJob('')
   }
@@ -39,9 +35,19 @@ function App() {
   }
 
   const removeAll = (e) =>{
-    let keyName = e.target.parentElement.parentElement;
-    keyName.remove()
+    let keyName = e.target.parentElement.parentElement.querySelectorAll('div');
+    for(let i=0 ; i <keyName.length ; i++ ){
+      keyName[i].remove()
+    }
     localStorage.removeItem("json");
+  }
+
+  const rmove = () =>{
+    return( 
+      <li className='textAlg'>
+        <span onClick={removeAll}>---- xóa tất cả ----</span>
+      </li> 
+    )
   }
 
   return (
@@ -59,7 +65,7 @@ function App() {
                   </div>
                 )
               }) }
-              <li id='removeAll' className='textAlg uact'><span onClick={removeAll}>---- xóa tất cả ----</span></li>
+              {rmove()}
             </ul>
         </div>
       </>
