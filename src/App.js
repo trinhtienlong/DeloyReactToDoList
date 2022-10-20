@@ -39,6 +39,7 @@ function App() {
     for(let i=0 ; i <keyName.length ; i++ ){
       keyName[i].remove()
     }
+    e.target.parentElement.classList.add("uact")
     localStorage.removeItem("json");
   }
 
