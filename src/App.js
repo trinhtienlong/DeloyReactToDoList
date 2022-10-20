@@ -4,6 +4,8 @@ import './App.css';
 function App() {
   const jobJson = JSON.parse(localStorage.getItem("json"))
 
+  const [test, setTest] = useState(false)
+
   const [job, setJob] = useState('')
 
   const [jobs, setJobs] = useState(jobJson ?? [])
@@ -12,6 +14,7 @@ function App() {
     job !== "" &&
     setJobs(save => {
       const newJobs = [...save, job]
+      setTest(true)
 
       const jobJson = JSON.stringify(newJobs)
       localStorage.setItem("json", jobJson)
@@ -66,7 +69,7 @@ function App() {
                   </div>
                 )
               }) }
-              {rmove()}
+              {test === true && rmove()}
             </ul>
         </div>
       </>
